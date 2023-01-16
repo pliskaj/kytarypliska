@@ -72,6 +72,9 @@ if (isset($_GET['product_id'])) {
   <div class="row mt-5">
 
     <?php while ($row = $product->fetch_assoc()) { ?>
+
+
+
       <div class="col-lg-5 col-md-6 col-sm-12">
         <img class="img-fluid w-100 pb-1" src="assets/img/<?php echo $row['produkt_fotka']; ?>" id="mainImg" />
         <div class="small-img-group">
@@ -87,8 +90,8 @@ if (isset($_GET['product_id'])) {
           <div class="small-img-col">
             <img src="assets/img/<?php echo $row['produkt_fotka4']; ?>" width="100%" class="small-img" />
           </div>
-        </div>   
-        
+        </div>
+
       </div>
 
 
@@ -96,12 +99,21 @@ if (isset($_GET['product_id'])) {
         <h6>D'Adarrio OK1</h6>
         <h3 class="py-4"><?php echo $row['produkt_jmeno']; ?></h3>
         <h2><?php echo $row['produkt_cena']; ?> Kč</h2>
-        <input type="number" value="1" />
-        <button class="buy-btn">Přidat do košíku</button>
+        <form method="POST" action="cart.php">
+          <input type="hidden" name="produkt_id" value="<?php echo $row['produkt_id']; ?>" />
+          <input type="hidden" name="produkt_fotka" value="<?php echo $row['produkt_fotka']; ?>" />
+          <input type="hidden" name="produkt_jmeno" value="<?php echo $row['produkt_jmeno']; ?>" />
+          <input type="hidden" name="produkt_cena" value="<?php echo $row['produkt_cena']; ?>" />
+          <input type="number" name="produkt_pocet" value="1" />
+          <button class="buy-btn" type="submit" name="pridatDoKosiku">Přidat do košíku</button>
+        </form>
+
         <h4 class="mt-5">Detaily o produktu</h4>
         <span><?php echo $row['produkt_popis']; ?></span>
       </div>
   </div>
+
+
 <?php } ?>
 </section>
 
