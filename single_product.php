@@ -87,7 +87,8 @@ if (isset($_GET['product_id'])) {
           <div class="small-img-col">
             <img src="assets/img/<?php echo $row['produkt_fotka4']; ?>" width="100%" class="small-img" />
           </div>
-        </div>
+        </div>   
+        
       </div>
 
 

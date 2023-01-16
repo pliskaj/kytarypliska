@@ -58,10 +58,10 @@
 
   <section id="brand" class="container">
     <div class="row m-8">
-      <img class="img-fluid col-lg-3 col-md-6 col-sm-12" src="assets/img/brand1.png" />
-      <img class="img-fluid col-lg-3 col-md-6 col-sm-12" src="assets/img/brand2.png" />
-      <img class="img-fluid col-lg-3 col-md-6 col-sm-12" src="assets/img/brand3.png" />
-      <img class="img-fluid col-lg-3 col-md-6 col-sm-12" src="assets/img/brand4.png" />
+      <img class="img-fluid col-lg-3 col-md-6 col-sm-12" src="assets/img/brand/washburn.svg" />
+      <img class="img-fluid col-lg-3 col-md-6 col-sm-12" src="assets/img/brand/gibson.svg" />
+      <img class="img-fluid col-lg-3 col-md-6 col-sm-12" src="assets/img/brand/fender.svg" />
+      <img class="img-fluid col-lg-3 col-md-6 col-sm-12" src="assets/img/brand/ibanez.svg" />
     </div>
   </section>
 
@@ -105,7 +105,8 @@
     </div>
     <div class="row mx-auto container-fluid">
 
-      <?php include('server/get_featured_products.php'); ?>
+      <?php include('server/get_featured_products.php'); 
+      ?>
 
       <?php while ($row = $featured_products->fetch_assoc()) { ?>
         <div class="product text-center col-lg-3 col-md-4 col-sm-12">
@@ -207,7 +208,7 @@
       <p>Hledáte ladičku na kytaru, baskytaru? Nebo snad kvalitní trsátka?</p>
     </div>
     <div class="row mx-auto container-fluid">
-      <?php include('server/get_addons.php'); ?>
+      /<?php include('server/get_addons.php'); ?>
       <?php while ($row = $addon->fetch_assoc()) { ?>
         <div class="product text-center col-lg-3 col-md-4 col-sm-12">
           <img class="img-fluid mb-3" src="assets/img/kyt1.jpg" />
