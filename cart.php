@@ -90,15 +90,18 @@ function PlnaCenaProduktu()
   $total = 0;
 
   foreach ($_SESSION['cart'] as $key => $value) {
-    $produkt = $_SESSION['cart'][$key];
 
-    $cena = $produkt['produkt_cena'];
-    $pocet = $produkt['produkt_pocet'];
 
-    $celkova_cena = $total + ($cena * $pocet);
+
+    $product = $_SESSION['cart'][$key];
+
+    $cena = $product['produkt_cena'];
+    $pocet = $product['produkt_pocet'];
+
+    $total = $total + ($cena * $pocet);
   }
 
-  $_SESSION['celkove'] = $celkova_cena;
+  $_SESSION['total'] = $total;
 }
 
 
@@ -190,7 +193,7 @@ function PlnaCenaProduktu()
 
             <form method="POST" action="cart.php">
               <input type="hidden" name="produkt_id" value="<?php echo $value['produkt_id']; ?>" />
-              <input type="number" name="produkt_pocet" value="<?php echo $value['produkt_pocet']; ?>" />
+              <input type="number" name="produkt_pocet" min="1" value="<?php echo $value['produkt_pocet']; ?>" />
               <input type="submit" class="edit-btn" value="edit" name="edit_pocet" />
             </form>
 
@@ -207,17 +210,21 @@ function PlnaCenaProduktu()
 
     <div class="cart-total">
       <table>
-        <tr>
+        <!--<tr>
           <td>Mezisoučet</td>
           <td>2000 Kč</td>
-        </tr>
+        </tr> -->
         <td>Celková cena</td>
-        <td><?php echo $_SESSION['celkove']; ?></td>
+        <td><?php echo $_SESSION['total']; ?> Kč</td>
       </table>
     </div>
 
     <div class="checkout-container">
-      <button class="btn checkout-btn">Objednat</button>
+      <form method="POST" action="checkout.php">
+
+
+        <input type="submit" class="btn checkout-btn" value="Objednat" name="checkout">
+      </form>
     </div>
   </section>
 
