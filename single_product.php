@@ -47,20 +47,20 @@ if (isset($_GET['product_id'])) {
     <div class="collapse navbar-collapse nav-buttons" id="navbarTogglerDemo02">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">Domů</a>
+          <a class="nav-link" href="index.php">Domů</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="shop.html">Obchod</a>
+          <a class="nav-link" href="shop.php">Obchod</a>
         </li>
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a class="nav-link" href="#">O nás</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Kontakt</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Kontakt</a>
-        </li>
-        <li class="nav-item">
-          <i class="fa-solid fa-cart-shopping"></i>
-          <i class="fa-solid fa-user"></i>
+          <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+          <a href="account.html"><i class="fa-solid fa-user"></i></a>
         </li>
       </ul>
     </div>

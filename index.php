@@ -105,7 +105,7 @@
     </div>
     <div class="row mx-auto container-fluid">
 
-      <?php include('server/get_featured_products.php'); 
+      <?php include('server/get_featured_products.php');
       ?>
 
       <?php while ($row = $featured_products->fetch_assoc()) { ?>
@@ -164,7 +164,7 @@
           <h5 class="p-name"><?php echo $row['produkt_jmeno'] ?></h5>
           <h4 class="p-price"><?php echo $row['produkt_cena'] ?> Kč</h4>
           <button class="buy-btn">Koupit</button>
-          <h2>Washburn 13G3</h2>
+          <a href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>"><button class="buy-btn">Objednat</button></a>
         </div>
 
       <?php } ?>
@@ -193,7 +193,7 @@
           </div>
           <h5 class="p-name"><?php echo $row['produkt_jmeno'] ?></h5>
           <h4 class="p-price"><?php echo $row['produkt_cena'] ?> Kč</h4>
-          <button class="buy-btn">Koupit</button>
+          <a href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>"><button class="buy-btn">Objednat</button></a>
         </div>
       <?php } ?>
     </div>
@@ -221,7 +221,7 @@
           </div>
           <h5 class="p-name"><?php echo $row['produkt_jmeno'] ?></h5>
           <h4 class="p-price"><?php echo $row['produkt_cena'] ?> Kč</h4>
-          <button class="buy-btn">Koupit</button>
+          <a href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>"><button class="buy-btn">Objednat</button></a>
 
         </div>
       <?php } ?>
