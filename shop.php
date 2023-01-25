@@ -1,19 +1,3 @@
-<?php
-
-session_start();
-//prevence proti poslani formulare bez vyplneni kosiku
-if (!empty($_SESSION['cart']) && isset($_POST['checkout'])) {
-  // pust ho dal
-
-
-} else {
-  header("location: index.php");
-}
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="cs">
 
@@ -21,12 +5,28 @@ if (!empty($_SESSION['cart']) && isset($_POST['checkout'])) {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <script src="https://kit.fontawesome.com/fd1bc553ca.js" crossorigin="anonymous"></script>
 
-  <title> KytaryPliska.cz | Objednávka</title>
+  <title>Obchod</title>
+  <style>
+    .product img {
+      width: 100%;
+      height: auto;
+      box-sizing: border-box;
+      object-fit: cover;
+    }
+
+    .pagination {
+      color: rgb(3, 57, 119);
+    }
+
+    .pagination li:hover a {
+      color: #fff;
+      background-color: rgb(3, 57, 119);
+    }
+  </style>
 </head>
 
 <body>
@@ -60,45 +60,54 @@ if (!empty($_SESSION['cart']) && isset($_POST['checkout'])) {
     </div>
   </nav>
 
-  <!--Nákup-->
-  <section class="my-5 py-5">
-    <div class="container text-center mt-3 pt-5">
-      <h2 class="form-weight-bold">Nákup</h2>
-      <hr class="mx-auto" />
+  <section id="featured" class="my-5 py-5">
+    <?php include('server/get_all.php'); ?>
+    <div class="container mt-5 py-5">
+      <h3>Naše produkty</h3>
+      <hr />
+      <p>Zde jsou žhavé produkty, které vřele doporučujeme.</p>
     </div>
+    <div class="row mx-auto container">
+      <?php while ($row = $all_products->fetch_assoc()) { ?>
+        <div onclick="window.location.href='single_product.php';" class="product text-center col-lg-3 col-md-4 col-sm-12">
+          <img class="img-fluid mb-3" src="assets/img/<?php echo $row['produkt_fotka']; ?>" />
+          <div class="star">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </div>
+          <h5 class="p-name"><?php echo $row['produkt_jmeno']; ?></h5>
+          <h4 class="p-price"><?php echo $row['produkt_cena']; ?> Kč</h4>
+          <a href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>"><button class="buy-btn">Koupit</button></a>
 
-    <div class="mx-auto container">
-      <!-- Cesta:  server/place_order.php -->
-      <form id="checkout-form" method="POST" action="server/place_order.php">
-        <div class="form-group checkout-small-element">
-          <label>Jméno</label>
-          <input type="text" class="form-control" id="checkout-name" name="jmeno" placeholder="Zadejte Vaše jméno" required />
         </div>
-        <div class="form-group checkout-small-element">
-          <label>Email</label>
-          <input type="email" class="form-control" id="checkout-email" name="email" placeholder="Zadejte Váš email" required />
-        </div>
-        <div class="form-group checkout-small-element">
-          <label for="phone">Telefon</label>
-          <input type="phone" class="form-control" id="checkout-phone" name="telefon" placeholder="Zadejte Vaše telefonní číslo" required />
-        </div>
-        <div class="form-group checkout-small-element">
-          <label>Město</label>
-          <input type="text" class="form-control" id="checkout-city" name="mesto" placeholder="Zadejte Vaše město" required />
-        </div>
-        <div class="form-group checkout-large-element">
-          <label>Adresa</label>
-          <input type="adress" class="form-control" id="checkout-address" name="adresa" placeholder="Zadejte Vaši adresu" required />
-        </div>
-        <div class="form-group checkout-btn-container">
-          <p>Celková cena: <?php echo $_SESSION['total']; ?> Kč</p>
-          <input type="submit" class="btn" id="checkout-btn" name="place_order" value="Objednat nyní" />
-        </div>
-      </form>
+      <?php } ?>
+
+      <nav aria-label="Paginace">
+        <ul class="pagination mt-5">
+          <li class="page-item">
+            <a class="page-link" href="#">Previous</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">1</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">3</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+
     </div>
   </section>
 
-  <!--Patička-->
   <footer class="mt-5 py-5">
     <div class="row container mx-auto">
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
@@ -141,18 +150,23 @@ if (!empty($_SESSION['cart']) && isset($_POST['checkout'])) {
           <a href="youtube.com"><i class="fab fa-youtube w-25 h-100 m-2"></i></a>
         </div>
       </div>
+    </div>
 
-      <div class="copyright mt-5">
-        <div class="row container mx-auto">
-          <div class="col-lg-3 col-md-5 col-sm-12 mb-4">
-            <img src="assets/img/payment.png" />
-          </div>
-          <div class="col-lg-3 col-md-5 col-sm-12 mb-4 text-nowrap mb-5">
-            <p>Kytary Pliska @ 2023 Všechna práva vyhrazena</p>
-          </div>
+    <div class="copyright mt-5">
+      <div class="row container mx-auto">
+        <div class="col-lg-3 col-md-5 col-sm-12 mb-4">
+          <img src="assets/img/payment.png" />
+        </div>
+        <div class="col-lg-3 col-md-5 col-sm-12 mb-4 text-nowrap mb-5">
+          <p>Kytary Pliska @ 2023 Všechna práva vyhrazena</p>
         </div>
       </div>
+    </div>
   </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 
 </html>

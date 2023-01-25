@@ -25,7 +25,7 @@ if (isset($_GET['product_id'])) {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 
 <head>
   <meta charset="utf-8" />
@@ -59,7 +59,7 @@ if (isset($_GET['product_id'])) {
           <a class="nav-link" href="contact.html">Kontakt</a>
         </li>
         <li class="nav-item">
-          <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+          <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
           <a href="account.html"><i class="fa-solid fa-user"></i></a>
         </li>
       </ul>
@@ -96,7 +96,6 @@ if (isset($_GET['product_id'])) {
 
 
       <div class="col-lg-5 col-md-12 col-sm-12">
-        <h6>D'Adarrio OK1</h6>
         <h3 class="py-4"><?php echo $row['produkt_jmeno']; ?></h3>
         <h2><?php echo $row['produkt_cena']; ?> Kč</h2>
         <form method="POST" action="cart.php">
@@ -216,27 +215,25 @@ if (isset($_GET['product_id'])) {
       </div>
     </div>
     <div class="footer-one col-lg-3 col-md-6 col-sm-12">
-      <h5 class="pb-2">Instagram</h5>
+      <h5 class="pb-2">Sociální sítě</h5>
       <div class="row">
-        <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-        <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-        <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-        <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-        <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
+        <a href="facebook.com"><i class="fab fa-facebook-f w-25 h-100 m-2"></i></a>
+        <a href="instagram.com"><i class="fab fa-instagram w-25 h-100 m-2"></i></a>
+        <a href="twitter.com"><i class="fab fa-twitter w-25 h-100 m-2"></i></a>
+        <a href="youtube.com"><i class="fab fa-youtube w-25 h-100 m-2"></i></a>
       </div>
     </div>
-  </div>
 
-  <div class="copyright mt-5">
-    <div class="row container mx-auto">
-      <div class="col-lg-3 col-md-5 col-sm-12 mb-4">
-        <img src="assets/img/payment.png" />
-      </div>
-      <div class="col-lg-3 col-md-5 col-sm-12 mb-4 text-nowrap mb-5">
-        <p>Kytary Pliska @ 2023 Všechna práva vyhrazena</p>
+    <div class="copyright mt-5">
+      <div class="row container mx-auto">
+        <div class="col-lg-3 col-md-5 col-sm-12 mb-4">
+          <img src="assets/img/payment.png" />
+        </div>
+        <div class="col-lg-3 col-md-5 col-sm-12 mb-4 text-nowrap mb-5">
+          <p>Kytary Pliska @ 2023 Všechna práva vyhrazena</p>
+        </div>
       </div>
     </div>
-  </div>
 </footer>
 
 <body>

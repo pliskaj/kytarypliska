@@ -110,7 +110,7 @@ function PlnaCenaProduktu()
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 
 <head>
   <meta charset="utf-8" />
@@ -121,7 +121,7 @@ function PlnaCenaProduktu()
   <link rel="stylesheet" href="assets/css/style.css" />
   <script src="https://kit.fontawesome.com/fd1bc553ca.js" crossorigin="anonymous"></script>
 
-  <title>Hello, world!</title>
+  <title>KytaryPliska.cz | Košík</title>
 </head>
 
 <body>
@@ -136,10 +136,10 @@ function PlnaCenaProduktu()
       <div class="collapse navbar-collapse nav-buttons" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Domů</a>
+            <a class="nav-link" href="index.php">Domů</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="shop.html">Obchod</a>
+            <a class="nav-link" href="shop.php">Obchod</a>
           </li>
           <!--<li class="nav-item">
               <a class="nav-link" href="#">O nás</a>
@@ -148,7 +148,7 @@ function PlnaCenaProduktu()
             <a class="nav-link" href="contact.html">Kontaktní údaje</a>
           </li>
           <li class="nav-item">
-            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
             <a href="account.html"> <i class="fa-solid fa-user"></i></a>
           </li>
         </ul>
@@ -241,11 +241,11 @@ function PlnaCenaProduktu()
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
         <h5 class="pb-2">Doporučeno</h5>
         <ul class="text-uppercase">
-          <li><a href="#">Men</a></li>
-          <li><a href="#">Men</a></li>
-          <li><a href="#">Men</a></li>
-          <li><a href="#">Men</a></li>
-          <li><a href="#">Men</a></li>
+          <li><a href="obchod.php">Obchod</a></li>
+          <li><a href="contact.html">Kontaktní údaje</a></li>
+          <li><a href="login.html">Přihlášení</a></li>
+          <li><a href="register.html">Registrace</a></li>
+          <li><a href="account.html">Přihlášení</a></li>
         </ul>
       </div>
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
@@ -264,27 +264,25 @@ function PlnaCenaProduktu()
         </div>
       </div>
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
-        <h5 class="pb-2">Instagram</h5>
+        <h5 class="pb-2">Sociální sítě</h5>
         <div class="row">
-          <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-          <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-          <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-          <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-          <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
+          <a href="facebook.com"><i class="fab fa-facebook-f w-25 h-100 m-2"></i></a>
+          <a href="instagram.com"><i class="fab fa-instagram w-25 h-100 m-2"></i></a>
+          <a href="twitter.com"><i class="fab fa-twitter w-25 h-100 m-2"></i></a>
+          <a href="youtube.com"><i class="fab fa-youtube w-25 h-100 m-2"></i></a>
         </div>
       </div>
-    </div>
 
-    <div class="copyright mt-5">
-      <div class="row container mx-auto">
-        <div class="col-lg-3 col-md-5 col-sm-12 mb-4">
-          <img src="assets/img/payment.png" />
-        </div>
-        <div class="col-lg-3 col-md-5 col-sm-12 mb-4 text-nowrap mb-5">
-          <p>Kytary Pliska @ 2023 Všechna práva vyhrazena</p>
+      <div class="copyright mt-5">
+        <div class="row container mx-auto">
+          <div class="col-lg-3 col-md-5 col-sm-12 mb-4">
+            <img src="assets/img/payment.png" />
+          </div>
+          <div class="col-lg-3 col-md-5 col-sm-12 mb-4 text-nowrap mb-5">
+            <p>Kytary Pliska @ 2023 Všechna práva vyhrazena</p>
+          </div>
         </div>
       </div>
-    </div>
   </footer>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

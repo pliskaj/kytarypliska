@@ -222,7 +222,7 @@ hr {
 }
 
 #banner {
-  background-image: url("../img/hero.png");
+  background-image: url("../img/hero/hero3.jpg");
   width: 100%;
   height: 60vh;
   background-size: cover;
@@ -542,4 +542,9 @@ th:last-child {
 
 #contact span {
   color: rgb(0, 110, 255);
+}
+
+.image-fluid {
+  height: 400px !important;
+  width: auto !important;
 }

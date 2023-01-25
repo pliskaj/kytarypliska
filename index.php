@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 
 <head>
   <meta charset="utf-8" />
@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <script src="https://kit.fontawesome.com/fd1bc553ca.js" crossorigin="anonymous"></script>
 
-  <title>Hello, world!</title>
+  <title>KytaryPliska.cz | Hlavní stránka</title>
 </head>
 
 <body>
@@ -24,10 +24,10 @@
       <div class="collapse navbar-collapse nav-buttons" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Domů</a>
+            <a class="nav-link" href="index.php">Domů</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="shop.html">Obchod</a>
+            <a class="nav-link" href="shop.php">Obchod</a>
           </li>
           <!-- <li class="nav-item">
               <a class="nav-link" href="#">O nás</a>
@@ -36,7 +36,7 @@
             <a class="nav-link" href="contact.html">Kontaktní údaje</a>
           </li>
           <li class="nav-item">
-            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
             <a href="account.html"><i class="fa-solid fa-user"></i></a>
           </li>
         </ul>
@@ -49,8 +49,8 @@
     <div class="container-fluid">
       <h5>Kytary Pliska</h5>
       <h1>Prodáváme <span>hudební</span> nástroje</h1>
-      <p>Od houslí po baskytary. Máme široký výběr sortimentu!</p>
-      <button>Let's start!</button>
+      <p>Od trsátek po baskytary. Máme široký výběr sortimentu!</p>
+      <button>Začněme!</button>
     </div>
   </section>
 
@@ -144,7 +144,7 @@
       <h3>Akustické kytary</h3>
       <hr class="mx-auto" />
       <p>
-        Nabízíme velký sortiment akustických kytar, od menších značek po staré známé
+        Nabízíme velký sortiment akustických kytar, od nových značek značek po staré známé
         klasiky.
       </p>
     </div>
@@ -163,7 +163,6 @@
           </div>
           <h5 class="p-name"><?php echo $row['produkt_jmeno'] ?></h5>
           <h4 class="p-price"><?php echo $row['produkt_cena'] ?> Kč</h4>
-          <button class="buy-btn">Koupit</button>
           <a href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>"><button class="buy-btn">Objednat</button></a>
         </div>
 
@@ -241,11 +240,11 @@
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
         <h5 class="pb-2">Doporučeno</h5>
         <ul class="text-uppercase">
-          <li><a href="#">Men</a></li>
-          <li><a href="#">Men</a></li>
-          <li><a href="#">Men</a></li>
-          <li><a href="#">Men</a></li>
-          <li><a href="#">Men</a></li>
+          <li><a href="obchod.php">Obchod</a></li>
+          <li><a href="contact.html">Kontaktní údaje</a></li>
+          <li><a href="login.html">Přihlášení</a></li>
+          <li><a href="register.html">Registrace</a></li>
+          <li><a href="account.html">Přihlášeí</a></li>
         </ul>
       </div>
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
@@ -264,13 +263,12 @@
         </div>
       </div>
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
-        <h5 class="pb-2">Instagram</h5>
+        <h5 class="pb-2">Sociální sítě</h5>
         <div class="row">
-          <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-          <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-          <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-          <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-          <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
+          <a href="facebook.com"><i class="fab fa-facebook-f w-25 h-100 m-2"></i></a>
+          <a href="instagram.com"><i class="fab fa-instagram w-25 h-100 m-2"></i></a>
+          <a href="twitter.com"><i class="fab fa-twitter w-25 h-100 m-2"></i></a>
+          <a href="youtube.com"><i class="fab fa-youtube w-25 h-100 m-2"></i></a>
         </div>
       </div>
     </div>
