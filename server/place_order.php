@@ -15,26 +15,38 @@ if (isset($_POST['place_order'])) {
     $adresa = $_POST['adresa'];
     $obj_cena = $_SESSION['total'];
     //tohle je zatim nevyuzite
-    $obj_status = "Ve zpracovani";
+    $obj_status = "Nezaplaceno";
     //tohle taky
-    $uziv_id = 1;
+    $uziv_id = $_SESSION['uziv_id;'];
     $obj_datum = date("Y-m-d H:i:s");
 
     $stmt = $conn->prepare("INSERT INTO objednavky (obj_cena, obj_status, uziv_id, uziv_tel,uziv_mesto,uziv_adresa,obj_datum ) 
-    VALUES (?,?,?,?,?,?,?);");
+    VALUES (?,?,?,?,?,?,?)");
 
     $stmt->bind_param('isiisss', $obj_cena, $obj_status, $uziv_id, $telefon, $mesto, $adresa, $obj_datum);
 
     $stmt->execute();
 
-    //tady potrebuju nejak vyresit objednavkovy id...zatim nevim jak..
+
     $obj_id = $stmt->insert_id;
 
-    echo $obj_id;
-    //mozna takhle ale zni to jako prasarna. Vloz pevne dany ID do stmt.
+
+    foreach ($_SESSION['cart'] as $key => $value) {
+        $produkt = $_SESSION['cart'][$key];
+        $produkt_id = $produkt['produkt_id'];
+        $produkt_jmeno = $produkt['produkt_jmeno'];
+        $produkt_cena = $produkt['produkt_cena'];
+        $produkt_fotka = $produkt['produkt_fotka'];
+        $produkt_pocet = $produkt['produkt_pocet'];
+
+        $stmt1 =  $conn->prepare("INSERT INTO objednavkaprod (obj_id,produkt_id,produkt_jmeno,produkt_fotka,produkt_cena,produkt_pocet,uziv_id,obj_datum)
+                         VALUES (?,?,?,?,?,?,?,?);");
+        $stmt1->bind_param('iissiiis', $obj_id, $produkt_id, $produkt_jmeno, $produkt_fotka, $produkt_cena, $produkt_pocet, $uziv_id, $obj_datum);
+
+        $stmt1->execute();
+    }
 
 
-
-    // dej mi produkty z cartu (session)
-
+    // ted prichazi na radu platebni brana
+    header('location: ../payment.php?obj_status=Objednavka byla uspesne odeslana');
 }

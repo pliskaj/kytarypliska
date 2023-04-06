@@ -81,7 +81,7 @@ if (isset($_POST['pridatDoKosiku'])) {
 
   PlnaCenaProduktu();
 } else {
-  header("location: index.php");
+  // header("location: index.php");
 }
 
 function PlnaCenaProduktu()
@@ -110,7 +110,7 @@ function PlnaCenaProduktu()
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 
 <head>
   <meta charset="utf-8" />
@@ -121,7 +121,7 @@ function PlnaCenaProduktu()
   <link rel="stylesheet" href="assets/css/style.css" />
   <script src="https://kit.fontawesome.com/fd1bc553ca.js" crossorigin="anonymous"></script>
 
-  <title>Hello, world!</title>
+  <title>KytaryPliska | Váš nákupní</title>
 </head>
 
 <body>
@@ -148,8 +148,8 @@ function PlnaCenaProduktu()
             <a class="nav-link" href="contact.html">Kontaktní údaje</a>
           </li>
           <li class="nav-item">
-            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
-            <a href="account.html"> <i class="fa-solid fa-user"></i></a>
+            <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="account.php"> <i class="fa-solid fa-user"></i></a>
           </li>
         </ul>
       </div>

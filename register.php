@@ -1,13 +1,64 @@
 <?php
 
 session_start();
-//prevence proti poslani formulare bez vyplneni kosiku
-if (!empty($_SESSION['cart']) && isset($_POST['checkout'])) {
-  // pust ho dal
+
+include('server/connection.php');
+
+if (isset($_SESSION['logged_in'])) {
+  header('location: account.php');
+}
+
+if (isset($_POST['register'])) {
 
 
-} else {
-  header("location: index.php");
+  $name = $_POST['jmeno'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $confirmPassword = $_POST['confirmPassword'];
+
+
+  // zkontroluj jestli se hesla shoduji
+  if ($password !== $confirmPassword) {
+    header('location: register.php?error=Hesla se neshodují!');
+  }
+
+  //zkontroluj jestli heslo ma alespon 6 znaku
+  else if (strlen($password) < 6) {
+    header('location: register.php?error=Heslo musí mít alespoň 6 znaků!');
+  } else {
+
+    $stmt1 = $conn->prepare("SELECT count(*) FROM uzivatele WHERE uziv_email = ?");
+    $stmt1->bind_param('s', $email);
+    $stmt1->execute();
+    $stmt1->bind_result($num_rows);
+    $stmt1->store_result();
+    $stmt1->fetch();
+
+    if ($num_rows != 0) {
+      header('location: register.php?error=Email je již použit!');
+    } else {
+
+      $password = password_hash($password, PASSWORD_DEFAULT);
+
+      $stmt = $conn->prepare("INSERT INTO uzivatele (uziv_jmeno, uziv_email, uziv_heslo) VALUES (?,?,?)");
+      $stmt->bind_param('sss', $name, $email, $password);
+
+      if ($stmt->execute()) {
+
+        $uziv_id = $stmt->insert_id;
+        $_SESSION['uziv_id'] = $uziv_id;
+        $_SESSION['uziv_email'] = $email;
+        $_SESSION['uziv_jmeno'] = $name;
+        $_SESSION['logged_in'] = true;
+        header('location: account.php?register_message=Nyní jste zaregistrován/a!');
+      } else {
+        header('location: register.php?register_error=Chyba při registraci!');
+      }
+
+      $stmt->close();
+      $conn->close();
+    }
+  }
 }
 
 
@@ -15,7 +66,7 @@ if (!empty($_SESSION['cart']) && isset($_POST['checkout'])) {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 
 <head>
   <meta charset="utf-8" />
@@ -26,10 +77,11 @@ if (!empty($_SESSION['cart']) && isset($_POST['checkout'])) {
   <link rel="stylesheet" href="assets/css/style.css" />
   <script src="https://kit.fontawesome.com/fd1bc553ca.js" crossorigin="anonymous"></script>
 
-  <title>!</title>
+  <title>Hello, world!</title>
 </head>
 
 <body>
+  <!--Navbar-->
   <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top">
     <div class="container-fluid">
       <img src="assets/img/logo1.png" alt="logo" class="logo" />
@@ -53,52 +105,54 @@ if (!empty($_SESSION['cart']) && isset($_POST['checkout'])) {
           </li>
           <li class="nav-item">
             <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
-            <a href="account.html"> <i class="fa-solid fa-user"></i></a>
+            <a href="account.php"> <i class="fa-solid fa-user"></i></a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!--Nákup-->
+  <!--Register-->
+
   <section class="my-5 py-5">
     <div class="container text-center mt-3 pt-5">
-      <h2 class="form-weight-bold">Nákup</h2>
+      <h2 class="form-weight-bold">Přihlásit se</h2>
       <hr class="mx-auto" />
     </div>
 
     <div class="mx-auto container">
-      <!-- Cesta:  server/place_order.php -->
-      <form id="checkout-form" method="POST" action="server/place_order.php">
-        <div class="form-group checkout-small-element">
+      <form id="register-form" method="POST" action="register.php">
+        <p style="color: red;"><?php if (isset($_GET['error'])) {
+                                  echo $_GET['error'];
+                                } ?></p>
+        <div class="form-group">
           <label>Jméno</label>
-          <input type="text" class="form-control" id="checkout-name" name="jmeno" placeholder="Zadejte Vaše jméno" required />
+          <input type="text" class="form-control" id="register-name" name="jmeno" placeholder="Zadejte Vaše jméno" required />
         </div>
-        <div class="form-group checkout-small-element">
+        <div class="form-group">
           <label>Email</label>
-          <input type="email" class="form-control" id="checkout-email" name="email" placeholder="Zadejte Váš email" required />
+          <input type="email" class="form-control" id="register-email" name="email" placeholder="Zadejte Váš email" required />
         </div>
-        <div class="form-group checkout-small-element">
-          <label for="phone">Telefon</label>
-          <input type="phone" class="form-control" id="checkout-phone" name="telefon" placeholder="Zadejte Vaše telefonní číslo" required />
+        <div class="form-group">
+          <label for="password">Heslo</label>
+          <input type="password" class="form-control" id="register-password" name="password" placeholder="Zadejte heslo" required />
         </div>
-        <div class="form-group checkout-small-element">
-          <label>Město</label>
-          <input type="text" class="form-control" id="checkout-city" name="mesto" placeholder="Zadejte Vaše město" required />
+        <div class="form-group">
+          <label for="password">Potvrzení hesla</label>
+          <input type="password" class="form-control" id="register-confirm-password" name="confirmPassword" placeholder="Potvrďte heslo" required />
         </div>
-        <div class="form-group checkout-large-element">
-          <label>Adresa</label>
-          <input type="adress" class="form-control" id="checkout-address" name="adresa" placeholder="Zadejte Vaši adresu" required />
+        <div class="form-group">
+          <input type="submit" class="btn" id="register-btn" name="register" value="Zaregistrovat se" />
         </div>
-        <div class="form-group checkout-btn-container">
-          <p>Celková cena: <?php echo $_SESSION['total']; ?> Kč</p>
-          <input type="submit" class="btn" id="checkout-btn" name="place_order" value="Objednat nyní" />
+        <div class="form-group">
+          <a id="login-url" class="btn">Přihlásit se</a>
         </div>
       </form>
     </div>
   </section>
 
-  <!--Patička-->
+  <!--Footer-->
+
   <footer class="mt-5 py-5">
     <div class="row container mx-auto">
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
