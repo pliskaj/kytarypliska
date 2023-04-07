@@ -53,6 +53,7 @@ if (!isset($_SESSION['logged_in'])) {
             $stmt1 = $conn->prepare("INSERT INTO objednavkaprod (obj_id,produkt_id,produkt_jmeno,produkt_fotka,produkt_cena,produkt_pocet,uziv_id,obj_datum)
                          VALUES (?,?,?,?,?,?,?,?);");
             $stmt1->bind_param('iissiiis', $obj_id, $produkt_id, $produkt_jmeno, $produkt_fotka, $produkt_cena, $produkt_pocet, $uziv_id, $obj_datum);
+            $stmt1->execute();
         }
 
 

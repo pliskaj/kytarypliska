@@ -19,13 +19,27 @@ if (isset($_POST['order_details_btn']) && isset($_POST['obj_id'])) {
     $obj_id = $_POST['obj_id'];
     $obj_status = $_POST['obj_status'];
 
-    $stmt = $conn->prepare("SELECT * FROM objednavkaprod WHERE obj_id = ?");
-
+    $stmt = $conn->prepare("SELECT polozka_id, obj_id, produkt_id, produkt_jmeno, produkt_fotka, produkt_cena, produkt_pocet, uziv_id, obj_datum FROM objednavkaprod WHERE obj_id = ?");
     $stmt->bind_param('i', $obj_id);
-
     $stmt->execute();
 
-    $objednavky_info = $stmt->get_result();
+    $objednavky_info = array();
+    $stmt->bind_result($polozka_id, $obj_id, $produkt_id, $produkt_jmeno, $produkt_fotka, $produkt_cena, $produkt_pocet, $uziv_id, $obj_datum);
+    while ($stmt->fetch()) {
+        $row = array(
+            'produkt_id' => $produkt_id,
+            'obj_id' => $obj_id,
+            'produkt_jmeno' => $produkt_jmeno,
+            'produkt_fotka' => $produkt_fotka,
+            'produkt_cena' => $produkt_cena,
+            'produkt_pocet' => $produkt_pocet,
+            'uziv_id' => $uziv_id,
+            'obj_datum' => $obj_datum
+        );
+        array_push($objednavky_info, $row);
+    }
+
+
 
     $celkovaCenaObjednavky  = plnaCenaObjednavky($objednavky_info);
 } else {
@@ -94,7 +108,7 @@ function plnaCenaObjednavky($objednavky_info)
     if ($obj_status == "Nezaplaceno") { ?>
 
         <form style="float: right;" method="POST" action="payment.php">
-            <input type="hidden" name="total_order_price" value="<?php echo $order_total_price; ?>">
+            <input type="hidden" name="celkovaCenaObjednavky" value="<?php echo $celkovaCenaObjednavky; ?>">
             <input type="hidden" name="obj_status" value="<?php echo $obj_status; ?>">
             <input type="submit" name="order_pay_btn" class="btn btn-primary" value="Zaplatit nyní" />
         </form>
