@@ -89,7 +89,8 @@ if (isset($_POST['pridatDoKosiku'])) {
 function PlnaCenaProduktu()
 {
 
-  $total = 0;
+  $total_price = 0;
+  $total_quantity = 0;
 
   foreach ($_SESSION['cart'] as $key => $value) {
 
@@ -100,10 +101,12 @@ function PlnaCenaProduktu()
     $cena = $product['produkt_cena'];
     $pocet = $product['produkt_pocet'];
 
-    $total = $total + ($cena * $pocet);
+    $total_price = $total_price + ($cena * $pocet);
+    $total_quantity = $total_quantity + $pocet;
   }
 
-  $_SESSION['total'] = $total;
+  $_SESSION['total'] = $total_price;
+  $_SESSION['quantity'] = $total_quantity;
 }
 
 

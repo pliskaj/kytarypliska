@@ -108,6 +108,7 @@ function plnaCenaObjednavky($objednavky_info)
     if ($obj_status == "Nezaplaceno") { ?>
 
         <form style="float: right;" method="POST" action="payment.php">
+            <input type="hidden" name="obj_id" value="<?php echo $obj_id; ?>">
             <input type="hidden" name="celkovaCenaObjednavky" value="<?php echo $celkovaCenaObjednavky; ?>">
             <input type="hidden" name="obj_status" value="<?php echo $obj_status; ?>">
             <input type="submit" name="order_pay_btn" class="btn btn-primary" value="Zaplatit nyní" />

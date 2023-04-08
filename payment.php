@@ -19,18 +19,23 @@ if (isset($_POST['order_pay_btn'])) {
     <div class="mx-auto container text-center">
 
 
-        <?php if (isset($_SESSION['total']) && $_SESSION['total'] != 0) { ?>
+        <?php if (isset($_POST['obj_status']) && $_POST['obj_status'] == "Nezaplaceno") { ?>
+            <?php $mnozstvi = strval($celkovaCenaObjednavky); ?>
+            <?php $obj_id = $_POST['obj_id']; ?>
+            <p>Celkem k uhrazení: <?php echo $celkovaCenaObjednavky; ?> Kč</p>
+            <!-- <input class="btn btn-primary" type="submit" value="Zaplatit nyní" /> -->
+            <div id="paypal-button-container"></div>
+
+
+        <?php } else if (isset($_SESSION['total']) && $_SESSION['total'] != 0) { ?>
             <?php $mnozstvi = strval($_SESSION['total']); ?>
+            <?php $obj_id = $_SESSION['obj_id']; ?>
             <p>Celkem k uhrazení: <?php echo $_SESSION['total']; ?> Kč</p>
             <!-- <input class="btn btn-primary" type="submit" value="Zaplatit nyní" /> -->
             <div id="paypal-button-container"></div>
 
 
-        <?php } else if (isset($_POST['obj_status']) && $_POST['obj_status'] == "Nezaplaceno") { ?>
-            <?php $mnozstvi = strval($celkovaCenaObjednavky); ?>
-            <p>Celkem k uhrazení: <?php echo $celkovaCenaObjednavky; ?> Kč</p>
-            <!-- <input class="btn btn-primary" type="submit" value="Zaplatit nyní" /> -->
-            <div id="paypal-button-container"></div>
+
 
         <?php } else { ?>
 
@@ -48,7 +53,7 @@ if (isset($_POST['order_pay_btn'])) {
 
 <!-- Replace "test" with your own sandbox Business account app client ID -->
 
-<script src="https://www.paypal.com/sdk/js?client-id=Ab3W5E1TRTpsjYFeSs0yzqOoEFXCEpN7RsPCYjCAJeKJIG-awQBJ1OOpvacX0NF-WO6n-2NQhV4I3Jhn&currency=CZK"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AcYrKfIS008_vFxy6nGLxMimImMkhmAv32O8Ec2Cxh71qTaqOYwxL4Jmz7X6S6yAy03PDXqGFME5GkmE&currency=CZK"></script>
 
 <!-- Set up a container element for the button -->
 
@@ -67,12 +72,14 @@ if (isset($_POST['order_pay_btn'])) {
         onApprove: function(data, actions) {
             return actions.order.capture().then(function(details) {
                 console.log(details);
+                var transakce_id = details.id;
                 alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                window.location.href = 'thank_you.html'; // Redirect to thank you page
+                window.location.href = 'server/payment_complete.php?transakce_id=' + transakce_id + '&obj_id=<?php echo $obj_id; ?>';
+                // Redirect to thank you page
             });
         }
     }).render('#paypal-button-container');
-</script>
+</script>a
 
 <?php
 include('layouts/footer.php');

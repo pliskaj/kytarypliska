@@ -98,6 +98,9 @@ if (isset($_SESSION['logged_in'])) {
         <p class="text-center" style="color:green"><?php if (isset($_GET['login_message'])) {
                                                       echo $_GET['login_message'];
                                                     } ?></p>
+        <p class="text-center" style="color:green"><?php if (isset($_GET['payment_message'])) {
+                                                      echo $_GET['payment_message'];
+                                                    } ?></p>
         <h3>Změnit heslo</h3>
         <hr class="mx-auto" />
         <div class="form-group">

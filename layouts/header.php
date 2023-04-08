@@ -1,3 +1,11 @@
+<?php
+
+// Path: layouts\header.php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="cs">
 
@@ -36,7 +44,14 @@
                         <a class="nav-link" href="contact.php">Kontaktní údaje</a>
                     </li>
                     <li class="nav-item">
-                        <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <a href="cart.php">
+                            <i class="fa-solid fa-cart-shopping">
+                                <?php if (isset($_SESSION['quantity']) && $_SESSION['quantity'] != 0) { ?>
+                                    <span class="cart-quantity"><?php echo $_SESSION['quantity']; ?></span>
+                                <?php } ?>
+                            </i>
+                        </a>
+
                         <a href="account.php"><i class="fa-solid fa-user"></i></a>
                     </li>
                 </ul>

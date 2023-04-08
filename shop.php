@@ -20,17 +20,43 @@ if (isset($_POST['hledani'])) {
   $produkty = $stmt->get_result();
 } else {
 
-  //pokud uzivatel nepouziva search tak query pojede normalne ze vsech
-  $stmt = $conn->prepare("SELECT * FROM produkty ");
+  //Zjisti na jakym cisle paginace jsme
 
-  $stmt->execute();
+  if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
+    $page_no = $_GET['page_no'];
+  } else {
 
-  $produkty = $stmt->get_result();
+    //pokud uzivatel neni na zadne strance tak se mu zobrazi prvni stranka
+    $page_no = 1;
+  }
+
+
+  //vrat pocet vsech produktu
+  $stmt1 = $conn->prepare("SELECT COUNT(*) AS total_records FROM produkty");
+  $stmt1->execute();
+  $stmt1->bind_result($total_records);
+  $stmt1->store_result();
+  $stmt1->fetch();
+
+
+  //pocet produktu na strance
+  $per_page = 8;
+
+  $offset = ($page_no - 1) * $per_page;
+
+  $previous_page = $page_no - 1;
+  $next_page = $page_no + 1;
+
+  $adjecents = "2";
+
+  $total_no_of_pages = ceil($total_records / $per_page);
+
+  //dej mi vsechny produkty
+
+  $stmt2 = $conn->prepare("SELECT * FROM produkty LIMIT $offset, $per_page");
+  $stmt2->execute();
+  $produkty = $stmt2->get_result();
 }
-
-
-
-
 
 ?>
 
@@ -114,19 +140,39 @@ if (isset($_POST['hledani'])) {
     <nav aria-label="Paginace">
       <ul class="pagination mt-5">
         <li class="page-item">
-          <a class="page-link" href="#">Previous</a>
+          <a class="page-link <?php if ($page_no <= 1) {
+                                echo 'disabled';
+                              } ?>" href="<?php if ($page_no <= 1) {
+                                            echo '#';
+                                          } else {
+                                            echo "?page_no" . $page_no - 1;
+                                          } ?>">Previous</a>
         </li>
         <li class="page-item">
-          <a class="page-link" href="#">1</a>
+          <a class="page-link" href="?page_no=1">1</a>
         </li>
         <li class="page-item">
-          <a class="page-link" href="#">2</a>
+          <a class="page-link" href="?page_no=2">2</a>
         </li>
-        <li class="page-item">
-          <a class="page-link" href="#">3</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">Next</a>
+
+        <?php if ($page_no >= 3) { ?>
+          <li class="page-item">
+            <a class="page-link" href="#">...</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="<?php echo "?page_no=" . $page_no; ?>"><?php echo $page_no; ?></a>
+          </li>
+        <?php } ?>
+        <li class="page-item <?php if ($page_no >= $total_no_of_pages) {
+                                echo 'disabled';
+                              } ?>">
+          <a class="page-link" href="<?php if ($page_no >= $total_no_of_pages) {
+                                        echo '#';
+                                      } else {
+                                        echo "?page_no=" . $page_no + 1;
+                                      } ?>
+
+          } ?>">Next</a>
         </li>
       </ul>
     </nav>

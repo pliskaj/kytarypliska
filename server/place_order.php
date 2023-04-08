@@ -56,6 +56,8 @@ if (!isset($_SESSION['logged_in'])) {
             $stmt1->execute();
         }
 
+        $_SESSION['obj_id'] = $obj_id;
+
 
         // ted prichazi na radu platebni brana
         header('location: ../payment.php?obj_status=Objednavka byla uspesne odeslana');
