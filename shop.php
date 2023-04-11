@@ -78,25 +78,35 @@ if (isset($_POST['hledani'])) {
         <div class="col-lg-6 col-md-6 col-sm-12">
           <p>Kategorie</p>
           <div class="form-check">
-            <input class="form-check-input" value="kytary" type="radio" name="kategorie" id="category1" />
-            <label class="form-check-label" for="category1"> Kytary </label>
+            <input class="form-check-input" value="kytary" type="radio" name="kategorie" id="category1" <?php if (isset($category1) && $category1 == 'kytary') {
+                                                                                                          echo 'checked';
+                                                                                                        } ?> />
+            <label class="form-check-label" for="flexRadioDefault1"> Kytary </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" value="baskytary" type="radio" name="kategorie" id="category2" />
-            <label class="form-check-label" for="category2">
+            <input class="form-check-input" value="baskytary" type="radio" name="kategorie" id="category2" <?php if (isset($category2) && $category2 == 'baskytary') {
+                                                                                                              echo 'checked';
+                                                                                                            } ?> />
+            <label class="form-check-label" for="flexRadioDefault2">
               Baskytary
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" value="doplnky" type="radio" name="kategorie" id="category3" />
-            <label class="form-check-label" for="category3">
+            <input class="form-check-input" value="doplnky" type="radio" name="kategorie" id="category3" <?php if (isset($category1) && $category3 == 'doplnky') {
+                                                                                                            echo 'checked';
+                                                                                                          } ?> />
+            <label class="form-check-label" for="flexRadioDefault3">
               Doplňky
             </label>
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
           <p>Cena</p>
-          <input type="range" class="form-control-range" name="cena" value="9000" min="1000" max="10000" id="customRange2" />
+          <input type="range" class="form-control-range" name="cena" value="<?php if (isset($cena)) {
+                                                                              echo $cena;
+                                                                            } else {
+                                                                              echo "1000";
+                                                                            } ?>" min="1000" max="10000" id="customRange2" />
           <div class="d-flex justify-content-between">
             <span>1 Kč </span>
             <span>10 000 Kč</span>
