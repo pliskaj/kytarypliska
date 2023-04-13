@@ -6,7 +6,7 @@
     <h5>Kytary Pliska</h5>
     <h1>Prodáváme <span>hudební</span> nástroje</h1>
     <p>Od houslí po baskytary. Máme široký výběr sortimentu!</p>
-    <button>Let's start!</button>
+    <a href="shop.php"><button>Začněme!</button></a>
   </div>
 </section>
 
@@ -24,36 +24,34 @@
 <!--Novinky-->
 
 <selection id="new" class="w-100">
-  <?php include('server/get_featured_products.php');
-  ?>
-  <?php while ($row = $featured_products->fetch_assoc()) { ?>
+  <div class="row p-0 m-0">
     <!--Prvni-->
     <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
-      <img class="img-fluid" src="assets/img/<?php echo $row['produkt_fotka']; ?>" />
+      <img class="img-fluid" src="assets/img/Dimavery AW-3031.jpg" />
       <div class="details">
-        <h2><?php echo $row['produkt_jmeno']; ?></h2>
-        <a href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>"><button class="buy-btn">Objednat</button></a>
+        <h2>Dimavery AW-3031</h2>
+        <a href="single_product.php?product_id=104"><button class="buy-btn">Objednat</button></a>
       </div>
     </div>
     <!--Dva-->
     <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
-      <img class="img-fluid" src="assets/img/<?php echo $row['produkt_fotka']; ?>" />
+      <img class="img-fluid" src="assets/img/Dimavery DR-612 Westernová elektroakustická kytara12-strunná, přírodní1.jpg" />
       <div class="details">
-        <h2><?php echo $row['produkt_jmeno']; ?></h2>
-        <a href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>"><button class="buy-btn">Objednat</button></a>
+        <h2>Dimavery DR-612</h2>
+        <a href="single_product.php?product_id=106"><button class="buy-btn">Objednat</button></a>
       </div>
     </div>
     <!--Tri-->
     <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
-      <img class="img-fluid" src="assets/img/<?php echo $row['produkt_fotka']; ?>" />
+      <img class="img-fluid" src="assets/img/Dimavery ABS kufr pro elektrickou kytaru1.jpg" />
       <div class="details">
-        <h2><?php echo $row['produkt_jmeno']; ?></h2>
-        <a href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>"><button class="buy-btn">Objednat</button></a>
+        <h2>Dimavery ABS</h2>
+        <a href="single_product.php?product_id=114"><button class="buy-btn">Objednat</button></a>
       </div>
     </div>
-    </div>
-  <?php } ?>
+  </div>
 </selection>
+
 
 <!--Doporučeno-->
 <section id="featured" class="my-5 pb-5">
@@ -84,8 +82,8 @@
 
 <section id="banner" class="my-5 py-5">
   <div class="container">
-    <h4>Kolekce od Ibanez</h4>
-    <h1>Do výprodeje zásob slevy až 60%</h1>
+    <h4>Kolekce od </h4>
+    <h1>Do výprodeje zásob slevy 20%</h1>
     <button class="text-uppercase">Koupit hned</button>
   </div>
 </section>
@@ -129,14 +127,7 @@
     <?php include('server/get_bass.php'); ?>
     <?php while ($row = $bass->fetch_assoc()) { ?>
       <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img class="img-fluid mb-3" src="assets/img<?php echo $row['produkt_fotka'] ?>" />
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
+        <img class="img-fluid mb-3" src="assets/img/<?php echo $row['produkt_fotka'] ?>" />
         <h5 class="p-name"><?php echo $row['produkt_jmeno'] ?></h5>
         <h4 class="p-price"><?php echo $row['produkt_cena'] ?> Kč</h4>
         <a href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>"><button class="buy-btn">Objednat</button></a>
@@ -157,7 +148,7 @@
     /<?php include('server/get_addons.php'); ?>
     <?php while ($row = $addon->fetch_assoc()) { ?>
       <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img class="img-fluid mb-3" src="assets/img/kyt1.jpg" />
+        <img class="img-fluid mb-3" src="assets/img/<?php echo $row['produkt_fotka'] ?>" />
         <h5 class="p-name"><?php echo $row['produkt_jmeno'] ?></h5>
         <h4 class="p-price"><?php echo $row['produkt_cena'] ?> Kč</h4>
         <a href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>"><button class="buy-btn">Objednat</button></a>

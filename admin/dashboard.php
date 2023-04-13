@@ -114,7 +114,7 @@ $objednavky = $stmt2->get_result();
                                                 } ?>" href="<?php if ($page_no <= 1) {
                                                                 echo '#';
                                                             } else {
-                                                                echo "?page_no" . $page_no - 1;
+                                                                echo "?page_no=" . ($page_no - 1);
                                                             } ?>">Previous</a>
                         </li>
                         <li class="page-item">

@@ -27,7 +27,7 @@ $stmt1->fetch();
 
 
 //pocet produktu na strance
-$per_page = 5;
+$per_page = 20;
 
 $offset = ($page_no - 1) * $per_page;
 
@@ -113,8 +113,9 @@ $produkty = $stmt2->get_result();
                                                 } ?>" href="<?php if ($page_no <= 1) {
                                                                 echo '#';
                                                             } else {
-                                                                echo "?page_no" . $page_no - 1;
+                                                                echo "?page_no=" . ($page_no - 1);
                                                             } ?>">Previous</a>
+
                         </li>
                         <li class="page-item">
                             <a class="page-link" href="?page_no=1">1</a>
@@ -137,12 +138,13 @@ $produkty = $stmt2->get_result();
                             <a class="page-link" href="<?php if ($page_no >= $total_no_of_pages) {
                                                             echo '#';
                                                         } else {
-                                                            echo "?page_no=" . $page_no + 1;
+                                                            echo "$page_no=" . $page_no + 1;
                                                         } ?>
 
           } ?>">Next</a>
                         </li>
                     </ul>
+
                 </nav>
             </div>
         </main>

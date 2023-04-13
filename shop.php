@@ -135,7 +135,7 @@ if (isset($_POST['hledani'])) {
     <?php while ($row = $produkty->fetch_assoc()) { ?>
 
       <div onclick="window.location.href='single_product.html';" class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img class="img-fluid mb-3" src="assets/img/<?php echo $row['produkt_fotka']; ?>" />s
+        <img class="img-fluid mb-3" src="assets/img/<?php echo $row['produkt_fotka']; ?>" />
         <h5 class="p-name"><?php echo $row['produkt_jmeno']; ?></h5>
         <h4 class="p-price"><?php echo $row['produkt_cena']; ?></h4>
         <a class="btn buy-btn" href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>">Koupit</a>
@@ -151,7 +151,7 @@ if (isset($_POST['hledani'])) {
                               } ?>" href="<?php if ($page_no <= 1) {
                                             echo '#';
                                           } else {
-                                            echo "?page_no" . $page_no - 1;
+                                            echo "?page_no=" . $page_no - 1;
                                           } ?>">Previous</a>
         </li>
         <li class="page-item">

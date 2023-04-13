@@ -26,7 +26,7 @@ session_start();
     <!--Navigace-->
     <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top">
         <div class="container-fluid">
-            <img src="assets/img/logo1.png" alt="logo" class="logo" />
+            <img src="assets/img/hero/logo1.png" alt="logo" class="logo" />
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

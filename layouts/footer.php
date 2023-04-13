@@ -3,7 +3,7 @@
  <footer class="mt-5 py-5">
      <div class="row container mx-auto">
          <div class="footer-one col-lg-3 col-md-6 col-sm-12">
-             <img src="assets/img/logo.png" class="logo1" />
+             <img src="assets/img/hero/logo.png" class="logo1" />
              <p class="pt-3">
                  Prodáváme hudební nástroje, vybavení za dobré peníze.
              </p>
@@ -40,7 +40,7 @@
      <div class="copyright mt-5">
          <div class="row container mx-auto">
              <div class="col-lg-3 col-md-5 col-sm-12 mb-4">
-                 <img src="assets/img/payment.png" />
+                 <img src="assets/img/hero/payment.png" />
              </div>
 
          </div>
