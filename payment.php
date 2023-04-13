@@ -74,13 +74,62 @@ if (isset($_POST['order_pay_btn'])) {
                 console.log(details);
                 var transakce_id = details.id;
                 alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                // vythani mi z details.id transakcni id a posli ho pres url do payment_complete.php 
                 window.location.href = 'server/payment_complete.php?transakce_id=' + transakce_id + '&obj_id=<?php echo $obj_id; ?>';
                 // Redirect to thank you page
             });
         }
     }).render('#paypal-button-container');
-</script>a
+</script>
 
 <?php
 include('layouts/footer.php');
 ?>
+
+
+
+
+admin/
+├─ layouts/
+│ ├─ footer.php
+│ ├─ header.php
+│ ├─ siderbar.php
+├─ add_product.php
+├─ create_product.php
+├─ dashboard.php
+├─ delete_product.php
+├─ edit_images.php
+├─ edit_order.php
+├─ edit_product.php
+├─ help.php
+├─ login.php
+├─ logout.php
+├─ products.php
+├─ update_images.php
+assets/
+├─ css/
+│ ├─ dashboard.css
+│ ├─ style.css
+├─ img/
+layouts/
+├─ footer.php
+├─ header.php
+server/
+├─ connection.php
+├─ get_acoustic.php
+├─ get_addons.php
+├─ get_bass.php
+├─ get_featured_products.php
+├─ payment_complete.php
+├─ place_order.php
+account.php
+cart.php
+contact.php
+checkout.php
+index.php
+login.php
+order_details.php
+payment.php
+register.php
+shop.php
+shop_details.php
