@@ -75,70 +75,7 @@ if (isset($_GET['product_id'])) {
 <?php } ?>
 </section>
 
-<section id="related-products" class="my-5 pb-5">
-  <div class="container text-center mt-5 py-5">
-    <h3>Podobné produkty</h3>
-    <hr class="mx-auto" />
-  </div>
-  <div class="row mx-auto container-fluid">
-    <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-      <img class="img-fluid mb-3" src="assets/img/kyt1.jpg" />
-      <div class="star">
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-      </div>
-      <h5 class="p-name">Ibanez 234</h5>
-      <h4 class="p-price">2000 Kč</h4>
-      <button class="buy-btn">Koupit</button>
-      <h2>Washburn 13G3</h2>
-    </div>
-    <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-      <img class="img-fluid mb-3" src="assets/img/kyt1.jpg" />
-      <div class="star">
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-      </div>
-      <h5 class="p-name">Ibanez 234</h5>
-      <h4 class="p-price">2000 Kč</h4>
-      <button class="buy-btn">Koupit</button>
-      <h2>Washburn 13G3</h2>
-    </div>
-    <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-      <img class="img-fluid mb-3" src="assets/img/kyt1.jpg" />
-      <div class="star">
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-      </div>
-      <h5 class="p-name">Ibanez 234</h5>
-      <h4 class="p-price">2000 Kč</h4>
-      <button class="buy-btn">Koupit</button>
-      <h2>Washburn 13G3</h2>
-    </div>
-    <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-      <img class="img-fluid mb-3" src="assets/img/kyt1.jpg" />
-      <div class="star">
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-      </div>
-      <h5 class="p-name">Ibanez 234</h5>
-      <h4 class="p-price">2000 Kč</h4>
-      <button class="buy-btn">Koupit</button>
-      <h2>Washburn 13G3</h2>
-    </div>
-  </div>
-</section>
+
 
 
 <script>

@@ -1,7 +1,4 @@
 <?php
-
-session_start();
-
 include('layouts/header.php');
 //prevence proti poslani formulare bez vyplneni kosiku
 if (!empty($_SESSION['cart'])) {

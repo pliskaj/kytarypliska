@@ -1,16 +1,5 @@
 <?php
 
-
-/*
-
-Nezaplaceno
-Zaplaceno
-Odesláno
-Doručeno
-
-*/
-
-
 include('server/connection.php');
 include('layouts/header.php');
 

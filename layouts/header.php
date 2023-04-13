@@ -4,6 +4,8 @@
 
 session_start();
 
+//include('../server/connection.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +19,7 @@ session_start();
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="https://kit.fontawesome.com/fd1bc553ca.js" crossorigin="anonymous"></script>
 
-    <title>Hello, world!</title>
+    <title>Kytary Pliska | E-Shop pro hudebníky</title>
 </head>
 
 <body>

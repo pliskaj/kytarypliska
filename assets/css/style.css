@@ -91,6 +91,7 @@ button:hover {
 
 @media only screen and (max-width: 990px) {
   .nav-buttons {
+    margin-left: 0;
     margin: 10px;
   }
   .nav-buttons ul {
@@ -256,6 +257,7 @@ footer h5 {
   color: #d8d8d8;
   font-weight: 700;
   font-size: 1.2rem;
+  text-align: center;
 }
 
 footer li {
@@ -279,6 +281,12 @@ footer p {
 
 footer .copyright img {
   width: 30%;
+}
+#copyright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px; /* adjust the height to your liking */
 }
 
 .logo {

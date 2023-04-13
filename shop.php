@@ -3,19 +3,22 @@
 include('server/connection.php');
 include('layouts/header.php');
 
-
+$page_no = 1;
 //pokud uzivatel pouziva search tak query pojede jinak
 if (isset($_POST['hledani'])) {
+
+
 
 
   $kategorie = $_POST['kategorie'];
   $cena = $_POST['cena'];
 
-  $stmt = $conn->prepare("SELECT * FROM produkty WHERE produkt_kateg = ? AND produkt_cena <=> ?");
+  $stmt = $conn->prepare("SELECT * FROM produkty WHERE produkt_kateg = ? AND produkt_cena <= ?");
 
   $stmt->bind_param('si', $kategorie, $cena);
 
   $stmt->execute();
+
 
   $produkty = $stmt->get_result();
 } else {
@@ -78,21 +81,21 @@ if (isset($_POST['hledani'])) {
         <div class="col-lg-6 col-md-6 col-sm-12">
           <p>Kategorie</p>
           <div class="form-check">
-            <input class="form-check-input" value="kytary" type="radio" name="kategorie" id="category1" <?php if (isset($category1) && $category1 == 'kytary') {
-                                                                                                          echo 'checked';
-                                                                                                        } ?> />
-            <label class="form-check-label" for="flexRadioDefault1"> Kytary </label>
+            <input class="form-check-input" value="akustika" type="radio" name="kategorie" id="category1" <?php if (isset($category1) && $category1 == 'akustika') {
+                                                                                                            echo 'checked';
+                                                                                                          } ?> />
+            <label class="form-check-label" for="flexRadioDefault1"> Akustické kytary </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" value="baskytary" type="radio" name="kategorie" id="category2" <?php if (isset($category2) && $category2 == 'baskytary') {
-                                                                                                              echo 'checked';
-                                                                                                            } ?> />
+            <input class="form-check-input" value="poloakustika" type="radio" name="kategorie" id="category2" <?php if (isset($category2) && $category2 == 'poloakustika') {
+                                                                                                                echo 'checked';
+                                                                                                              } ?> />
             <label class="form-check-label" for="flexRadioDefault2">
-              Baskytary
+              Poloakustické kytary
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" value="doplnky" type="radio" name="kategorie" id="category3" <?php if (isset($category1) && $category3 == 'doplnky') {
+            <input class="form-check-input" value="doplnky" type="radio" name="kategorie" id="category3" <?php if (isset($category3) && $category3 == 'doplnky') {
                                                                                                             echo 'checked';
                                                                                                           } ?> />
             <label class="form-check-label" for="flexRadioDefault3">

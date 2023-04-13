@@ -11,11 +11,10 @@
          <div class="footer-one col-lg-3 col-md-6 col-sm-12">
              <h5 class="pb-2">Doporučeno</h5>
              <ul class="text-uppercase">
-                 <li><a href="#">Men</a></li>
-                 <li><a href="#">Men</a></li>
-                 <li><a href="#">Men</a></li>
-                 <li><a href="#">Men</a></li>
-                 <li><a href="#">Men</a></li>
+                 <li><a href="/register.php">Zaregistrovat se</a></li>
+                 <li><a href="/login.php">Přihlásit se</a></li>
+                 <li><a href="/shop.php">Obchod</a></li>
+                 <li><a href="/cart.php">Košík</a></li>
              </ul>
          </div>
          <div class="footer-one col-lg-3 col-md-6 col-sm-12">
@@ -34,14 +33,7 @@
              </div>
          </div>
          <div class="footer-one col-lg-3 col-md-6 col-sm-12">
-             <h5 class="pb-2">Instagram</h5>
-             <div class="row">
-                 <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-                 <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-                 <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-                 <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-                 <img src="assets/img/footer.jpg" class="img-fluid w-25 h-100 m-2" />
-             </div>
+             <h5 class="pb-2">Kytary Pliska</h5>
          </div>
      </div>
 
@@ -50,10 +42,11 @@
              <div class="col-lg-3 col-md-5 col-sm-12 mb-4">
                  <img src="assets/img/payment.png" />
              </div>
-             <div class="col-lg-3 col-md-5 col-sm-12 mb-4 text-nowrap mb-5">
-                 <p>Kytary Pliska @ 2023 Všechna práva vyhrazena</p>
-             </div>
+
          </div>
+     </div>
+     <div style="text-align: center" ;">
+         <p>Kytary Pliska @ 2023 Všechna práva vyhrazena</p>
      </div>
  </footer>
 

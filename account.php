@@ -1,6 +1,4 @@
 <?php
-
-session_start();
 include('server/connection.php');
 include('layouts/header.php');
 if (!isset($_SESSION['logged_in'])) {

@@ -24,32 +24,35 @@
 <!--Novinky-->
 
 <selection id="new" class="w-100">
-  <div class="row p-0 m-0">
+  <?php include('server/get_featured_products.php');
+  ?>
+  <?php while ($row = $featured_products->fetch_assoc()) { ?>
     <!--Prvni-->
     <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
-      <img class="img-fluid" src="assets/img/kyt1.jpg" />
+      <img class="img-fluid" src="assets/img/<?php echo $row['produkt_fotka']; ?>" />
       <div class="details">
-        <h2>Washburn 13G3</h2>
-        <button class="text-uppercase">Koupit hned</button>
+        <h2><?php echo $row['produkt_jmeno']; ?></h2>
+        <a href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>"><button class="buy-btn">Objednat</button></a>
       </div>
     </div>
     <!--Dva-->
     <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
-      <img class="img-fluid" src="assets/img/kyt1.jpg" />
+      <img class="img-fluid" src="assets/img/<?php echo $row['produkt_fotka']; ?>" />
       <div class="details">
-        <h2>Washburn 13G3</h2>
-        <button class="text-uppercase">Koupit hned</button>
+        <h2><?php echo $row['produkt_jmeno']; ?></h2>
+        <a href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>"><button class="buy-btn">Objednat</button></a>
       </div>
     </div>
     <!--Tri-->
     <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
-      <img class="img-fluid" src="assets/img/kyt1.jpg" />
+      <img class="img-fluid" src="assets/img/<?php echo $row['produkt_fotka']; ?>" />
       <div class="details">
-        <h2>Washburn 13G3</h2>
-        <button class="text-uppercase">Koupit hned</button>
+        <h2><?php echo $row['produkt_jmeno']; ?></h2>
+        <a href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>"><button class="buy-btn">Objednat</button></a>
       </div>
     </div>
-  </div>
+    </div>
+  <?php } ?>
 </selection>
 
 <!--Doporučeno-->
@@ -67,13 +70,7 @@
     <?php while ($row = $featured_products->fetch_assoc()) { ?>
       <div class="product text-center col-lg-3 col-md-4 col-sm-12">
         <img class="img-fluid mb-3" src="assets/img/<?php echo $row['produkt_fotka']; ?>" />
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
+
         <h5 class="p-name"><?php echo $row['produkt_jmeno']; ?></h5>
         <h4 class="p-price"><?php echo $row['produkt_cena']; ?> Kč</h4>
         <a href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>"><button class="buy-btn">Objednat</button></a>

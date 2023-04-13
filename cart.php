@@ -1,7 +1,4 @@
 <?php
-
-session_start();
-
 include('layouts/header.php');
 
 if (isset($_POST['pridatDoKosiku'])) {
@@ -130,40 +127,45 @@ function PlnaCenaProduktu()
       <th>Mezisoučet</th>
     </tr>
 
-    <?php foreach ($_SESSION['cart'] as $key => $value) { ?>
+
+    <?php if (isset($_SESSION['cart'])) { ?>
+      <?php foreach ($_SESSION['cart'] as $key => $value) { ?>
 
 
-      <tr>
-        <td>
-          <div class="product-info">
-            <img src="assets/img/<?php echo $value['produkt_fotka']; ?>" />
-            <div>
-              <p><?php echo $value['produkt_jmeno']; ?> </p>
-              <small><span><?php echo $value['produkt_cena']; ?></span>Kč</small>
-              <br />
-              <form method="POST" action="cart.php">
-                <input type="hidden" name="produkt_id" value="<?php echo $value['produkt_id']; ?>" />
-                <input type="submit" name="remove_product" class="remove-btn" value="Odebrat" />
-              </form>
+        <tr>
+          <td>
+            <div class="product-info">
+              <img src="assets/img/<?php echo $value['produkt_fotka']; ?>" />
+              <div>
+                <p><?php echo $value['produkt_jmeno']; ?> </p>
+                <small><span><?php echo $value['produkt_cena']; ?></span>Kč</small>
+                <br />
+                <form method="POST" action="cart.php">
+                  <input type="hidden" name="produkt_id" value="<?php echo $value['produkt_id']; ?>" />
+                  <input type="submit" name="remove_product" class="remove-btn" value="Odebrat" />
+                </form>
 
+              </div>
             </div>
-          </div>
-        </td>
-        <td>
+          </td>
+          <td>
 
-          <form method="POST" action="cart.php">
-            <input type="hidden" name="produkt_id" value="<?php echo $value['produkt_id']; ?>" />
-            <input type="number" name="produkt_pocet" min="1" value="<?php echo $value['produkt_pocet']; ?>" />
-            <input type="submit" class="edit-btn" value="edit" name="edit_pocet" />
-          </form>
+            <form method="POST" action="cart.php">
+              <input type="hidden" name="produkt_id" value="<?php echo $value['produkt_id']; ?>" />
+              <input type="number" name="produkt_pocet" min="1" value="<?php echo $value['produkt_pocet']; ?>" />
+              <input type="submit" class="edit-btn" value="edit" name="edit_pocet" />
+            </form>
 
-        </td>
+          </td>
 
-        <td>
-          <span class="product-price"><?php echo $value['produkt_pocet'] * $value['produkt_cena']; ?></span>
-          <span>Kč</span>
-        </td>
-      </tr>
+          <td>
+            <span class="product-price"><?php echo $value['produkt_pocet'] * $value['produkt_cena']; ?></span>
+            <span>Kč</span>
+          </td>
+        </tr>
+
+      <?php } ?>
+
 
     <?php } ?>
   </table>
@@ -175,7 +177,9 @@ function PlnaCenaProduktu()
           <td>2000 Kč</td>
         </tr> -->
       <td>Celková cena</td>
-      <td><?php echo $_SESSION['total']; ?> Kč</td>
+      <?php if (isset($_SESSION['cart'])) { ?>
+        <td><?php echo $_SESSION['total']; ?> Kč</td>
+      <?php } ?>
     </table>
   </div>
 

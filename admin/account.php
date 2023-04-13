@@ -24,12 +24,9 @@ if (!isset($_SESSION['admin_logged_in'])) {
 
             <div class="container">
 
-                Emailová adresa : <span>info@kytary-pliska.cz</span>
-                <hr>
-                Telefonní číslo : <span>+420 727 911 844</span>
-                <hr>
-                Adresa : <span>Ústí nad Labem, Olšinky 510, 403 22</span>
-                <hr>
+                <p>ID: <?php echo $_SESSION['admin_id'] ?></p>
+                <p>Jméno: <?php echo $_SESSION['admin_jmeno'] ?></p>
+                <p>Email: <?php echo $_SESSION['admin_email'] ?></p>
             </div>
 
 
