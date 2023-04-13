@@ -54,11 +54,22 @@ $produkty = $stmt2->get_result();
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Produkty</h1>
+                <h1 class="h2">Administrační panel</h1>
 
             </div>
 
-
+            <h2>Produkty</h2>
+            <?php if (isset($_GET['edit_success_message'])) { ?>
+                <div class="alert alert-success" role="alert">
+                    <?php echo $_GET['edit_success_message']; ?>
+                </div>
+            <?php } ?>
+            <?php if (isset($_GET['edit_error_message'])) { ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $_GET['edit_error_message']; ?>
+                </div>
+            <?php } ?>
+            
 
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
@@ -87,7 +98,7 @@ $produkty = $stmt2->get_result();
                                 <td><?php echo $produkt['produkt_kateg']; ?></td>
                                 <td><?php echo $produkt['produkt_barva']; ?></td>
                                 <td><a href=" edit_product.php?product_id=<?php echo $produkt['produkt_id']; ?>" class="btn btn-primary">Editovat</a></td>
-                                <td><a href="delete_product.php?obj_id=<?php echo $produkt['produkt_id']; ?>" class="btn btn-danger">Smazat</a></td>
+                                <td><a href="delete_product.php?product_id=<?php echo $produkt['produkt_id']; ?>" class="btn btn-danger">Smazat</a></td>
                             </tr>
                         <?php } ?>
                     </tbody>

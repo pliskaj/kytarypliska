@@ -2,19 +2,19 @@
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="index.php">
+                <a class="nav-link active" href="../index.php">
                     <span data-feather="home"></span>
                     Dashboard <span class="sr-only">(current)</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.php">
+                <a class="nav-link" href="">
                     <span data-feather="file"></span>
                     Objednávky
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="products.php">
+                <a class="nav-link" href="./products.php">
                     <span data-feather="shopping-cart"></span>
                     Produkty
                 </a>
