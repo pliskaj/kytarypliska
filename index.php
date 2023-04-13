@@ -107,13 +107,6 @@
     <?php while ($row = $acoustic->fetch_assoc()) { ?>
       <div class="product text-center col-lg-3 col-md-4 col-sm-12">
         <img class="img-fluid mb-3" src="assets/img/<?php echo $row['produkt_fotka'] ?>" />
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
         <h5 class="p-name"><?php echo $row['produkt_jmeno'] ?></h5>
         <h4 class="p-price"><?php echo $row['produkt_cena'] ?> Kč</h4>
         <button class="buy-btn">Koupit</button>
@@ -165,13 +158,6 @@
     <?php while ($row = $addon->fetch_assoc()) { ?>
       <div class="product text-center col-lg-3 col-md-4 col-sm-12">
         <img class="img-fluid mb-3" src="assets/img/kyt1.jpg" />
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
         <h5 class="p-name"><?php echo $row['produkt_jmeno'] ?></h5>
         <h4 class="p-price"><?php echo $row['produkt_cena'] ?> Kč</h4>
         <a href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>"><button class="buy-btn">Objednat</button></a>
