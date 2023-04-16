@@ -52,7 +52,7 @@ if (isset($_POST['order_pay_btn'])) {
 
 <!-- Replace "test" with your own sandbox Business account app client ID -->
 
-<script src="https://www.paypal.com/sdk/js?client-id=AagYRHFpN3m-Ztb62r-1iQwp-Gpi0OJuVIjg6UEBliL0BEk7rEH2BMyb-EHms2RSvSO-X-_43U0n9Jl9&currency=CZK"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=Af1YsPeO8WLRHl_kuHO2G7G3Y83-GTxJ6gcXALl8Z6fNfM6u5WVeTejwVolaneibYnQRrwPsbO74_5w9&currency=CZK"></script>
 
 <!-- Set up a container element for the button -->
 

@@ -81,9 +81,6 @@ if (isset($_POST['login-btn'])) {
             <div class="form-group">
                 <input type="submit" class="btn" id="login-btn" name="login-btn" value="Přihlásit se" />
             </div>
-            <div class="form-group">
-                <a id="register-url" href="register.php" class="btn">Zaregistrovat se</a>
-            </div>
         </form>
     </div>
 </section>

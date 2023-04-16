@@ -34,6 +34,10 @@
          </div>
          <div class="footer-one col-lg-3 col-md-6 col-sm-12">
              <h5 class="pb-2">Kytary Pliska</h5>
+             <ul class="text-uppercase">
+                 <li><a href="./admin/login.php">Administrace</a></li>
+
+             </ul>
          </div>
      </div>
 

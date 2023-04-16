@@ -82,10 +82,10 @@
 
 <section id="banner" class="my-5 py-5">
   <div class="container">
-    <h4>Kolekce od </h4>
-    <h1>Do výprodeje zásob slevy 20%</h1>
-    <button class="text-uppercase">Koupit hned</button>
-  </div>
+    <h4>Kolekce od Dimavery</h4>
+    <h1>Do výprodeje zásob slevy až 20%</h1>
+    <a href="#guitars"> <button class="text-uppercase"> Objednat</button></a>
+    < </div>
 </section>
 
 <!--Kytary-->
@@ -107,8 +107,7 @@
         <img class="img-fluid mb-3" src="assets/img/<?php echo $row['produkt_fotka'] ?>" />
         <h5 class="p-name"><?php echo $row['produkt_jmeno'] ?></h5>
         <h4 class="p-price"><?php echo $row['produkt_cena'] ?> Kč</h4>
-        <button class="buy-btn">Koupit</button>
-        <a href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>"><button class="buy-btn">Objednat</button></a>
+        <a class="btn buy-btn" href="<?php echo "single_product.php?product_id=" . $row['produkt_id']; ?>">Objednat</a>
       </div>
 
     <?php } ?>

@@ -102,6 +102,12 @@ if (isset($_POST['hledani'])) {
               Doplňky
             </label>
           </div>
+          <div class="form-check">
+            <input class="form-check-input" value="basy" type="radio" name="kategorie" id="category4" <?php if (isset($category4) && $category4 == 'basy') {
+                                                                                                        echo 'checked';
+                                                                                                      } ?> />
+            <label class="form-check-label" for="flexRadioDefault4"> Baskytary </label>
+          </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
           <p>Cena</p>
