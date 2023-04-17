@@ -30,6 +30,7 @@ if (isset($_POST['order_details_btn']) && isset($_POST['obj_id'])) {
 
 
 
+
     $celkovaCenaObjednavky  = plnaCenaObjednavky($objednavky_info);
 } else {
     header("location: account.php");
@@ -51,7 +52,6 @@ function plnaCenaObjednavky($objednavky_info)
 
     return $total;
 }
-
 
 
 ?>
